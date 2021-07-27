@@ -1,23 +1,12 @@
 class Matrix:
     def __init__(self, matrix_string):
         # Convert matrix string into a list within a list (a matrix)
-        # .splitlines() makes a list of each linebreak
-        self.matrix = matrix_string.splitlines()
-        for i in range(0, len(self.matrix)):
-            # .split() makes a list from each space
-            self.matrix[i] = self.matrix[i].split()
+        self.matrix = [[int(x) for x in row.split()] for row in matrix_string.splitlines()]
 
     def row(self, index):
-        row_list = self.matrix[index-1]
-        for i in range(0, len(row_list)):
-            # Convert strings into ints
-            row_list[i] = int(row_list[i])
-        return row_list
+        return self.matrix[index-1]
 
     def column(self, index):
-        column_list = []
-        for i in range(0, len(self.matrix)):
-            # Append to column list and turn strings into ints
-            column_list.append(int(self.matrix[i][index-1]))
+        column_list = [row[index-1] for row in self.matrix]
         return column_list
 
