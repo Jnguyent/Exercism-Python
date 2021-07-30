@@ -8,4 +8,6 @@ def slices(series, length):
     if len(series) == 0:
         raise ValueError('empty series is invalid')
 
-    pass
+    string_list = [series[i:i+length] for i in range(0, len(series) - length + 1)]
+
+    return string_list
